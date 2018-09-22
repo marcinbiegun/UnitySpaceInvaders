@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum Direction {
-    Left,
-    Right,
-};
 
 public class PlayerController : MonoBehaviour {
     public float moveSpeed = 0.1f;
@@ -20,9 +16,9 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
         if (Input.GetKey(KeyCode.LeftArrow)) {
-            gameObject.transform.position += MoveVector(Direction.Left);
+            gameObject.transform.position += MoveVector(HorizontalDirection.Left);
         } else if (Input.GetKey(KeyCode.RightArrow)) {
-            gameObject.transform.position += MoveVector(Direction.Right);
+            gameObject.transform.position += MoveVector(HorizontalDirection.Right);
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
@@ -30,12 +26,12 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    Vector3 MoveVector(Direction direction) {
+    Vector3 MoveVector(HorizontalDirection dir) {
         float delta = Time.deltaTime * moveSpeed;
-        switch (direction) {
-            case Direction.Left:
+        switch (dir) {
+            case HorizontalDirection.Left:
                 return new Vector3(-delta, 0f, 0f);
-            case Direction.Right:
+            case HorizontalDirection.Right:
                 return new Vector3(delta, 0f, 0f);
         }
         throw new UnityException("Unknown direction");

@@ -1,0 +1,4 @@
+﻿enum HorizontalDirection {
+    Left,
+    Right,
+};

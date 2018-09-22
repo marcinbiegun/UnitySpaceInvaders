@@ -23,6 +23,7 @@ public class AliensSpawner : MonoBehaviour {
                 float offsetY = y * stepY;
                 Vector3 position = new Vector3(minX + offsetX, minY + offsetY, 0f);
                 GameObject newAlien = Instantiate(alienPrefab, position, Quaternion.identity);
+                newAlien.transform.SetParent(gameObject.transform);
             }
         }
     }
