@@ -1,14 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PixelMechanicalSprite : MonoBehaviour {
 
     public GameObject pixelPrefab;
     public int pixelSliceSize = 5;
+    private Vector3 originalScale = new Vector3(0f, 0f, 0f);
 
     // Use this for initialization
     void Start () {
+        originalScale = gameObject.transform.localScale;
+        gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+
         var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         var texture = spriteRenderer.sprite.texture;
         var textureRect = spriteRenderer.sprite.textureRect;
@@ -29,11 +34,17 @@ public class PixelMechanicalSprite : MonoBehaviour {
             }
         }
 
-
         spriteRenderer.enabled = false;
+        gameObject.transform.localScale = originalScale;
+
+
     }
 
     void CreateMechanicalPixel(float xPos, float yPos, int size, Color[] pixels) {
+        // Don't create if average alpha for colors is small
+        if (pixels.Average(p => p.a) < 0.01)
+            return;
+
         var position = new Vector3(xPos, yPos, 0f);
         var pixel = Instantiate(pixelPrefab, position, Quaternion.identity);
 
@@ -47,6 +58,10 @@ public class PixelMechanicalSprite : MonoBehaviour {
         var sprite = Sprite.Create(pixelTexture, new Rect(0.0f, 0.0f, pixelTexture.width, pixelTexture.height), pivot, pixelsPerUnit);
 
         pixel.GetComponent<SpriteRenderer>().sprite = sprite;
+
+        var boxCollider = pixel.GetComponent<BoxCollider2D>();
+        var spriteBounds = sprite.bounds;
+        boxCollider.size = spriteBounds.size;
     }
 
 }
