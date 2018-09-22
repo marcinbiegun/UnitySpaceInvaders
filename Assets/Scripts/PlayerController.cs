@@ -14,12 +14,10 @@ public class PlayerController : MonoBehaviour {
     public GameObject rocketPrefab;
     public GameObject rocketsHolder;
 
-    // Use this for initialization
     void Start() {
         rocketsHolder = new GameObject(name = "RocketsHolder");
     }
 
-    // Update is called once per frame
     void Update() {
         if (Input.GetKey(KeyCode.LeftArrow)) {
             gameObject.transform.position += MoveVector(Direction.Left);

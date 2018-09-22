@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f24655551f04e9cba3bcc8b7ec6690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 4
   fireLocked: 0
   rocketPrefab: {fileID: 1465179130490238, guid: da89bbc24848f4713954ad06485cf6eb,
     type: 2}

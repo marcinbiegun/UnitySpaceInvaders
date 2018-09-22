@@ -170,9 +170,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alienPrefab: {fileID: 1386547500}
-  width: 3
+  width: 8
   height: 3
-  alienColumns: 10
+  alienColumns: 8
   alienRows: 3
 --- !u!4 &271886439
 Transform:
@@ -277,7 +277,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -319,7 +319,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4075573380664774, guid: c011d39ac141b4752af151955f82ebf0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -4
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 4075573380664774, guid: c011d39ac141b4752af151955f82ebf0, type: 2}
       propertyPath: m_LocalPosition.z

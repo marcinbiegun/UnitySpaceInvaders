@@ -11,16 +11,12 @@ public class AliensSpawner : MonoBehaviour {
     public float alienColumns = 10f;
     public float alienRows = 3f;
 
-    // Use this for initialization
     void Start () {
         float minX = gameObject.transform.position.x - width / 2f;
-        float maxX = gameObject.transform.position.x + width / 2f;
-        float stepX = width / alienColumns;
+        float stepX = width / (alienColumns-1);
         float minY = gameObject.transform.position.y - height / 2f;
-        float maxY = gameObject.transform.position.y + height / 2f;
-        float stepY = height / alienRows;
+        float stepY = height / (alienRows-1);
 
-        Debug.Log(minX);
         for (int y = 0; y < alienRows; y++) {
             for (int x = 0; x < alienColumns; x++) {
                 float offsetX = x * stepX;
@@ -31,7 +27,6 @@ public class AliensSpawner : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
     void Update () {
 	}
 }
