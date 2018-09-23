@@ -15,4 +15,13 @@ public class CityPixelController : MonoBehaviour {
         // Add random force
         rigidbody2d.AddForce(Random.insideUnitCircle * 100f);
     }
+
+
+    void OnTriggerEnter2D(Collider2D col) {
+        int boundsLayer = LayerMask.NameToLayer("Bounds");
+
+        if (col.gameObject.layer == boundsLayer) {
+            Destroy(gameObject);
+        }
+    }
 }

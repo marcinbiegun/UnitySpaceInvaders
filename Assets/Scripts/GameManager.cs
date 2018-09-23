@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
+    public static GameManager instance = null;
+    public GameObject levelManagerPrefab;
+    public GameObject levelManager;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Use this for initialization
+    void Start() {
+        //Application.targetFrameRate = 60;
+
+        // Make self a publicly available singleton
+        if (instance == null) { instance = this; } else if (instance != this) { Destroy(gameObject); }
+        //levelManager = Instantiate(levelManagerPrefab, new Vector3(0f, 0f, 0f), Quaternion.identity);
+        //levelManager.transform.SetParent(null);
+
+        // Never destroy gameManager (on scene changes)
+        DontDestroyOnLoad(gameObject);
+    }
 }
+
+

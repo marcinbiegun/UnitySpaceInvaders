@@ -14,9 +14,11 @@ public class RocketController : MonoBehaviour {
         } else if (col.gameObject.layer == alienLayer) {
             Destroy(gameObject);
             Destroy(col.gameObject);
+            LevelManager.instance.AlienKilled();
         } else if (col.gameObject.layer == cityLayer) {
             Destroy(gameObject);
             col.gameObject.GetComponent<CityPixelController>().DetachPixelFromCity();
+            LevelManager.instance.CityDamaged();
         }
     }
 

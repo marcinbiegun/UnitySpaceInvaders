@@ -8,12 +8,17 @@ public class LaserController : MonoBehaviour {
         int boundsLayer = LayerMask.NameToLayer("Bounds");
         int alienLayer = LayerMask.NameToLayer("Alien");
         int cityLayer = LayerMask.NameToLayer("City");
+        int playerLayer = LayerMask.NameToLayer("Player");
 
         if (col.gameObject.layer == boundsLayer) {
             Destroy(gameObject);
         } else if (col.gameObject.layer == cityLayer) {
             Destroy(gameObject);
             col.gameObject.GetComponent<CityPixelController>().DetachPixelFromCity();
+            LevelManager.instance.CityDamaged();
+        } else if (col.gameObject.layer == playerLayer) {
+            Destroy(gameObject);
+            LevelManager.instance.PlayerDied();
         }
     }
 }
