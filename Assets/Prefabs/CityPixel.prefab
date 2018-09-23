@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a919a7ebc1b492a88746c1b5e10783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detachForce: 100
+  detachTorque: 100
 --- !u!212 &212838176283806878
 SpriteRenderer:
   m_ObjectHideFlags: 1
