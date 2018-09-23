@@ -16,7 +16,7 @@ public class RocketController : MonoBehaviour {
             Destroy(col.gameObject);
         } else if (col.gameObject.layer == cityLayer) {
             Destroy(gameObject);
-            Destroy(col.gameObject);
+            col.gameObject.GetComponent<CityPixelController>().DetachPixelFromCity();
         }
     }
 

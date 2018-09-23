@@ -19,8 +19,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4808476814423408}
+  - component: {fileID: 114793440571583806}
   - component: {fileID: 212838176283806878}
   - component: {fileID: 61846257692845512}
+  - component: {fileID: 50345292571599264}
   m_Layer: 16
   m_Name: CityPixel
   m_TagString: Untagged
@@ -41,6 +43,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50345292571599264
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1025117290222148}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61846257692845512
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -66,6 +88,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.0001, y: 0.0001}
   m_EdgeRadius: 0
+--- !u!114 &114793440571583806
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1025117290222148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a919a7ebc1b492a88746c1b5e10783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212838176283806878
 SpriteRenderer:
   m_ObjectHideFlags: 1

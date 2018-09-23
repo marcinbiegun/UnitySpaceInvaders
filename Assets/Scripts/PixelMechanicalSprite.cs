@@ -8,11 +8,14 @@ public class PixelMechanicalSprite : MonoBehaviour {
     public GameObject pixelPrefab;
     public int pixelSliceSize = 5;
     private Vector3 originalScale = new Vector3(0f, 0f, 0f);
+    private Vector3 originalPosition = new Vector3(0f, 0f, 0f);
 
     // Use this for initialization
     void Start () {
         originalScale = gameObject.transform.localScale;
+        originalPosition = gameObject.transform.position;
         gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+        gameObject.transform.position = new Vector3(0f, 0f, 0f);
 
         var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         var texture = spriteRenderer.sprite.texture;
@@ -36,12 +39,12 @@ public class PixelMechanicalSprite : MonoBehaviour {
 
         spriteRenderer.enabled = false;
         gameObject.transform.localScale = originalScale;
-
+        gameObject.transform.position = originalPosition;
 
     }
 
     void CreateMechanicalPixel(float xPos, float yPos, int size, Color[] pixels) {
-        // Don't create if average alpha for colors is small
+        // Don't if pixels are transparent
         if (pixels.Average(p => p.a) < 0.01)
             return;
 
