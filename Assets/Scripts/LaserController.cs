@@ -16,6 +16,7 @@ public class LaserController : MonoBehaviour {
         } else if (col.gameObject.layer == cityLayer) {
             LevelManager.instance.CityDamaged();
             col.gameObject.GetComponent<CityPixelController>().DetachPixelFromCity();
+            col.gameObject.GetComponent<AudioSource>().Play();
             Destroy(gameObject);
         } else if (col.gameObject.layer == playerLayer) {
             LevelManager.instance.PlayerDied();
