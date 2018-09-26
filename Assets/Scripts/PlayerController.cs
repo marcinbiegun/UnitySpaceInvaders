@@ -21,8 +21,12 @@ public class PlayerController : MonoBehaviour {
             gameObject.transform.position += MoveVector(Direction.Right);
         }
 
+
         if (Input.GetKeyDown(KeyCode.Space)) {
-            Fire();
+            Fire(); 
+        }
+        if (Input.GetKeyDown(KeyCode.R)) {
+            LevelManager.instance.ResetRequested();
         }
     }
 
