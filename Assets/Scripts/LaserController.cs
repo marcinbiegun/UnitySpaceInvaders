@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LaserController : MonoBehaviour {
+    public GameObject explosionPrefab;
 
     void OnTriggerEnter2D(Collider2D col) {
         int boundsLayer = LayerMask.NameToLayer("Bounds");
@@ -13,12 +14,14 @@ public class LaserController : MonoBehaviour {
         if (col.gameObject.layer == boundsLayer) {
             Destroy(gameObject);
         } else if (col.gameObject.layer == cityLayer) {
-            Destroy(gameObject);
-            col.gameObject.GetComponent<CityPixelController>().DetachPixelFromCity();
             LevelManager.instance.CityDamaged();
-        } else if (col.gameObject.layer == playerLayer) {
+            col.gameObject.GetComponent<CityPixelController>().DetachPixelFromCity();
             Destroy(gameObject);
+        } else if (col.gameObject.layer == playerLayer) {
             LevelManager.instance.PlayerDied();
+            var explosion = Instantiate(explosionPrefab, gameObject.transform);
+            explosion.transform.SetParent(null);
+            Destroy(gameObject);
         }
     }
 }

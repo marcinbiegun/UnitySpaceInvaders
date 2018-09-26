@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RocketController : MonoBehaviour {
+    public GameObject explosionPrefab;
 
     void OnTriggerEnter2D(Collider2D col) {
         int boundsLayer = LayerMask.NameToLayer("Bounds");
@@ -12,6 +13,8 @@ public class RocketController : MonoBehaviour {
         if (col.gameObject.layer == boundsLayer) {
             Destroy(gameObject);
         } else if (col.gameObject.layer == alienLayer) {
+            var explosion = Instantiate(explosionPrefab, gameObject.transform);
+            explosion.transform.SetParent(null);
             Destroy(gameObject);
             Destroy(col.gameObject);
             LevelManager.instance.AlienKilled();

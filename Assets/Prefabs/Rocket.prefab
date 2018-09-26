@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: {x: 0, y: 10, z: 0}
+  scale: {x: 0, y: 0, z: 0}
 --- !u!114 &114242415415690076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,6 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c76f9b8812a482aa4af09e5471a296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 1053151092843582, guid: d2f718664930c4c12906646c96abd18a,
+    type: 2}
 --- !u!212 &212629863344042034
 SpriteRenderer:
   m_ObjectHideFlags: 1
