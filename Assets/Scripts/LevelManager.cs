@@ -14,12 +14,17 @@ public class LevelManager : MonoBehaviour {
     public Text damageText;
     public Text livesText;
 
-
     private void Start() {
         // Make self a publicly available singleton
         if (instance == null) { instance = this; } else if (instance != this) { Destroy(gameObject); }
 
         UpdateUI();
+    }
+
+    void BuildLevel() {
+    }
+
+    void DestroyLevel() {
     }
 
     void UpdateUI() {

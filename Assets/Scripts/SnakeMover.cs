@@ -2,47 +2,58 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+enum MoveSequence {
+    Left,
+    DownOnLeft,
+    Right,
+    DownOnRight
+};
+
 public class SnakeMover : MonoBehaviour {
     public float width = 1f;
-    public float horizontalSpeed = 1f;
-    public float verticalStep = 1f;
+    public float verticalStep = -1f;
+    public float moveSpeed = 1f;
 
-    private HorizontalDirection direction = HorizontalDirection.Left;
+    private MoveSequence moveSequence;
     private Vector3 originalPosition = new Vector3(0f, 0f, 0f);
+    private Vector3 targetPosition;
 
-    // Use this for initialization
-    void Start () {
+    void Start() {
         originalPosition = gameObject.transform.position;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        // Switch direction if touching the limit, and step vertically
-        float x = gameObject.transform.position.x;
-        float minX = originalPosition.x - width / 2f;
-        float maxX = originalPosition.x + width / 2f;
+        moveSequence = MoveSequence.Left;
+        targetPosition = originalPosition += new Vector3(0f - width / 2f, 0f, 0f);
+    }
 
-        if (x < minX) {
-            direction = HorizontalDirection.Right;
-            VerticalStep();
-        } else if (x > maxX) {
-            direction = HorizontalDirection.Left;
-            VerticalStep();
+    void Update() {
+        MoveTowardsTarget();
+        if (TargetReached())
+            targetPosition = NewTarget();
+    }
+
+    void MoveTowardsTarget() {
+        Vector3 newPostion = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+        transform.position = newPostion;
+    }
+
+    bool TargetReached() {
+        float sqrRemainingDistance = (transform.position - targetPosition).sqrMagnitude;
+        return sqrRemainingDistance <= float.Epsilon;
+    }
+
+    Vector3 NewTarget() {
+        switch(moveSequence) {
+            case MoveSequence.Left:
+                moveSequence = MoveSequence.DownOnLeft;
+                return transform.position + new Vector3(0f, verticalStep, 0f);
+            case MoveSequence.DownOnLeft:
+                moveSequence = MoveSequence.Right;
+                return transform.position + new Vector3(width, 0f, 0f);
+            case MoveSequence.Right:
+                moveSequence = MoveSequence.DownOnRight;
+                return transform.position + new Vector3(0f, verticalStep, 0f);
+            default: // MoveSequence.DownOnRight
+                moveSequence = MoveSequence.Left;
+                return transform.position + new Vector3(-width, 0f, 0f);
         }
-
-        // Always perform horizontal move
-        HorizontalMove();
-    }
-
-    void HorizontalMove() {
-        float xDirection = direction == HorizontalDirection.Left ? -1f : 1f;
-        Vector3 move = new Vector3(xDirection * horizontalSpeed, 0f, 0f);
-        gameObject.transform.position += move * Time.deltaTime;
-
-    }
-
-    void VerticalStep() {
-        Vector3 move = new Vector3(0f, verticalStep, 0f);
-        gameObject.transform.position += move;
     }
 }

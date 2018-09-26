@@ -16,9 +16,9 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
         if (Input.GetKey(KeyCode.LeftArrow)) {
-            gameObject.transform.position += MoveVector(HorizontalDirection.Left);
+            gameObject.transform.position += MoveVector(Direction.Left);
         } else if (Input.GetKey(KeyCode.RightArrow)) {
-            gameObject.transform.position += MoveVector(HorizontalDirection.Right);
+            gameObject.transform.position += MoveVector(Direction.Right);
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
@@ -26,12 +26,12 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    Vector3 MoveVector(HorizontalDirection dir) {
+    Vector3 MoveVector(Direction dir) {
         float delta = Time.deltaTime * moveSpeed;
         switch (dir) {
-            case HorizontalDirection.Left:
+            case Direction.Left:
                 return new Vector3(-delta, 0f, 0f);
-            case HorizontalDirection.Right:
+            case Direction.Right:
                 return new Vector3(delta, 0f, 0f);
         }
         throw new UnityException("Unknown direction");
