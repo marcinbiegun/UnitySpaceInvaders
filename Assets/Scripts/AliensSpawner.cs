@@ -48,6 +48,8 @@ public class AliensSpawner : MonoBehaviour {
     void Shot() {
         if (lastShootAt > (Time.time - shotDelaySeconds))
             return;
+        if (aliensHolder.transform.childCount == 0)
+            return;
 
         var randomIndex = Random.Range(0, aliensHolder.transform.childCount);
         var randomAlien = aliensHolder.transform.GetChild(randomIndex);
