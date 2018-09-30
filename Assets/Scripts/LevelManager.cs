@@ -39,7 +39,7 @@ public class LevelManager : MonoBehaviour {
         livesText.text = "" + lives;
     }
 
-    void GameOver() {
+    public void GameOver() {
         gameOverText.enabled = true;
         Time.timeScale = 0f;
     }

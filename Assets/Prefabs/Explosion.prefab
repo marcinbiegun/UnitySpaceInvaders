@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c32de4802859d486fbe401ad763a1052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationTime: 0.25
-  scaleAddition: {x: 1, y: 1, z: 0}
+  animationTime: 0.35
+  scaleAddition: {x: 1.5, y: 1.5, z: 0}
 --- !u!212 &212686549494168118
 SpriteRenderer:
   m_ObjectHideFlags: 1
